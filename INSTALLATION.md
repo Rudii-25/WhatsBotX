@@ -212,32 +212,37 @@ npm run dist
 ### Starting the Application
 
 ```bash
-# Start in development mode
-npm run dev
-
-# Or start production version
+# Start with Electron GUI (recommended)
 npm start
 ```
+
+**What happens automatically:**
+1. ✅ Electron GUI launches
+2. ✅ WhatsApp bot initializes
+3. ✅ QR code displays for connection
+4. ✅ Settings and controls available
+5. ✅ API server can be started from Settings
 
 ### WhatsApp Connection
 
 1. **Launch Application**
-   - The Electron GUI will open automatically
-   - Or visit `http://localhost:3000` for web interface
+   - The Electron GUI opens automatically with `npm start`
+   - Shows Control Panel with Start Bot button
 
-2. **QR Code Display**
-   - A QR code will appear in the application
-   - The QR code is also logged in the console
+2. **Start the Bot**
+   - Click "Start Bot" button in Control Panel
+   - Bot initializes and displays QR code section
 
 3. **Scan QR Code**
    - Open WhatsApp on your mobile device
    - Go to **Settings → Linked Devices**
    - Tap **"Link a Device"**
-   - Scan the QR code displayed in the application
+   - Scan the displayed QR code
 
 4. **Connection Confirmation**
-   - Wait for "Connected" status in the application
-   - The bot is now ready to receive messages
+   - Wait for "Connected" status in the Control Panel
+   - Status indicator turns green
+   - Bot is now ready to receive messages
 
 ### Testing Connection
 
@@ -249,24 +254,35 @@ Send a test message to your WhatsApp number:
 
 Expected response: `🏓 Pong! Response time: Xms`
 
+### Starting the API Server
+
+1. **Open Settings Panel** (in GUI)
+2. **Go to Advanced Tab**
+3. **Click "Start API Server"**
+4. **Confirm** status shows "Active"
+5. **API** available at `http://localhost:3001`
+
+**Requirements:**
+- Bot must be running first
+- API server toggle requires active WhatsApp connection
+
 ---
 
 ## 🔧 Advanced Configuration
 
 ### Custom Port Configuration
 
-To run on a different port:
+Edit `.env` file or settings:
 
-```bash
-# Set environment variable
-export PORT=8080
+```env
+# API Port (default: 3001)
+API_PORT=3001
 
-# Or edit .env file
-echo "PORT=8080" >> .env
-
-# Start application
-npm start
+# Bot command prefix (default: /)
+BOT_PREFIX=/
 ```
+
+Or change in GUI Settings → Advanced Tab
 
 ### Database Configuration
 

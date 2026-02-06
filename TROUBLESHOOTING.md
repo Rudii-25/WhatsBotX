@@ -527,34 +527,100 @@ grep "connection" logs/whatsbotx.log | tail -5
 
 ## 🔌 API Issues
 
+### API Server Not Starting from GUI
+
+**Symptoms:**
+- "Failed to toggle API" error message
+- API Dashboard shows "Inactive"
+- localhost:3001 refusing to connect
+
+**Solutions:**
+
+1. **Check if bot is running:**
+   - API server requires bot to be started first
+   - Click "Start Bot" in Control Panel
+   - Wait for "Connected" status
+
+2. **Start API server from Settings:**
+   - Go to Settings → Advanced tab
+   - Click "Start API Server" button
+   - Check for success notification
+
+3. **View API server logs:**
+   - Open DevTools (F12 in GUI)
+   - Go to Console tab
+   - Look for API server startup messages
+   - Check for error messages
+
+4. **Verify port availability:**
+   ```bash
+   # Windows
+   netstat -ano | findstr :3001
+   
+   # Linux/macOS
+   lsof -i :3001
+   ```
+
+5. **Check API Dashboard:**
+   - Navigate to "API Dashboard & Endpoints"
+   - Click "Status" tab
+   - Verify server status display
+
+### API localhost:3001 Refusing Connection
+
+**Symptoms:**
+- "Connection refused" error
+- Unable to connect to localhost:3001
+- Port 3001 already in use
+
+**Solutions:**
+
+1. **Change API port in Settings:**
+   - Go to Settings → Advanced tab
+   - Modify "API Port" field
+   - Save and restart bot
+   - Start API server again
+
+2. **Free up port 3001:**
+   ```bash
+   # Kill process using port 3001
+   # Windows
+   taskkill /PID [PID] /F
+   
+   # Linux/macOS
+   kill -9 [PID]
+   ```
+
+3. **Check firewall settings:**
+   - Allow WhatsBotX through firewall
+   - Ensure port 3001 is not blocked
+   - Check antivirus port restrictions
+
 ### API not responding
 
 **Symptoms:**
 - API endpoints return 500 errors
-- API server not starting
-- Connection refused errors
+- API server appears started but unresponsive
+- No response from API calls
 
 **Solutions:**
 
-1. **Check API server status:**
-   ```bash
-   curl http://localhost:3000/health
-   ```
+1. **Verify bot is still connected:**
+   - Check Control Panel status
+   - If disconnected, reconnect with QR code
+   - API server stops if bot disconnects
 
-2. **Verify port availability:**
-   ```bash
-   netstat -tlnp | grep :3000
-   ```
+2. **Check API logs:**
+   - Open DevTools (F12)
+   - Check console for error messages
+   - Look for "API" related warnings
 
-3. **Check API logs:**
-   ```bash
-   tail -f logs/whatsbotx.log | grep "API"
-   ```
-
-4. **Restart API server:**
-   ```bash
-   pm2 restart whatsbotx
-   ```
+3. **Restart everything:**
+   - Stop Bot (button in Control Panel)
+   - Stop API Server (button in Settings)
+   - Wait 2 seconds
+   - Start Bot again
+   - Start API Server again
 
 ### Authentication failures
 
@@ -564,23 +630,22 @@ grep "connection" logs/whatsbotx.log | tail -5
 
 **Solutions:**
 
-1. **Verify API key:**
-   ```bash
-   # Check .env file
-   grep API_KEY .env
-   ```
+1. **Generate new API key:**
+   - Go to Settings → Advanced tab
+   - API Dashboard → API Keys tab
+   - Click "Generate New Key"
+   - Copy and use new key
 
 2. **Check API key format:**
    ```bash
-   # Should be in header
-   curl -H "Authorization: Bearer YOUR_API_KEY" http://localhost:3000/api/v1/status
+   # Should be in Authorization header
+   curl -H "Authorization: Bearer YOUR_API_KEY" http://localhost:3001/api/messages
    ```
 
-3. **Regenerate API key:**
-   ```javascript
-   // In .env
-   API_KEY=your-new-secure-api-key-here
-   ```
+3. **View existing keys:**
+   - Settings → Advanced
+   - API Dashboard → API Keys tab
+   - Lists all available API keys
 
 ### Rate limiting issues
 
@@ -591,13 +656,13 @@ grep "connection" logs/whatsbotx.log | tail -5
 **Solutions:**
 
 1. **Check rate limits:**
-   ```javascript
-   // In .env
-   RATE_LIMIT_WINDOW=900000  # 15 minutes
-   RATE_LIMIT_MAX=100        # 100 requests per window
+   ```bash
+   # View rate limit headers
+   curl -v http://localhost:3001/api/status
+   # Look for X-RateLimit-* headers
    ```
 
-2. **Implement backoff:**
+2. **Implement backoff:
    ```javascript
    // Client-side retry with exponential backoff
    async function apiCall(retryCount = 0) {

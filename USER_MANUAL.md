@@ -254,21 +254,50 @@ The dashboard provides an overview of your bot's activity:
    ```
 
 2. **Upload the File:**
-   - Go to Bulk Messaging tab
-   - Click "Choose File" and select your .txt file
+   - Go to Bulk Messaging tab → Bulk Import
+   - Click "Upload Numbers (.txt file)" and select your .txt file
    - Numbers are automatically validated and loaded
+   - **✨ NEW:** All imported numbers display in a list below the upload area
+   - You can see exactly which numbers will be used before sending
 
-3. **Send Bulk Messages:**
+3. **View Imported Numbers:**
+   - After uploading, a "Imported Numbers:" section appears
+   - Shows all valid numbers in a grid layout
+   - First 50 numbers visible, "+X more" indicator if more exist
+   - Hover over numbers to see full details
+   - Helps verify all numbers before sending
+
+4. **Send Bulk Messages:**
    - Enter your message in the text area
-   - Click "Send Bulk Messages"
-   - Monitor progress in real-time
+   - Click "Send to All"
+   - Monitor progress in real-time with live statistics
 
 #### Contact Management
 
-- **Add Contacts:** Manually add names and numbers
-- **Import/Export:** Bulk import from CSV files
+- **Add Contacts:** Manually add names and numbers in Contacts tab
+- **Import/Export:** Export contact lists or import from previous exports
 - **Tags:** Organize contacts with custom tags
 - **Search:** Quickly find contacts by name or number
+
+### API Dashboard & Server
+
+#### Starting the API Server
+
+1. **Enable API Server:**
+   - Go to Settings → Advanced tab
+   - Click "Start API Server" button
+   - Wait for confirmation message
+   - API server starts on port 3001
+
+2. **API Status:**
+   - Dashboard shows "Active" or "Inactive" status
+   - Real-time indicator shows server state
+   - Check logs if connection fails
+
+3. **Using the API:**
+   - Once running, send requests to `http://localhost:3001`
+   - Use endpoints for bulk messaging, status checks
+   - **Note:** Bot must be running to start API server
 
 ### AI Chat Integration
 

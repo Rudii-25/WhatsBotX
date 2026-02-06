@@ -54,6 +54,8 @@
 - ✅ **Error Handling & Reporting** - Individual success/failure tracking
 - ✅ **Phone Number Validation** - International format verification
 - ✅ **Rate Limiting Protection** - Anti-spam delays to prevent blocking
+- ✅ **Imported Numbers Visualization** - View all imported/added numbers before sending
+- ✅ **Export Functionality** - Save contact lists for future use
 
 ### 🧠 **AI & Productivity Tools**
 - ✅ **Interactive AI Chat** - Built-in AI assistant for conversations
@@ -103,6 +105,26 @@ npm start
 1. **📱 Scan QR Code** - Use WhatsApp mobile to scan the displayed QR code
 2. **⏳ Wait for Connection** - See "Connected" status in GUI
 3. **🎉 Start Using** - Access all features through GUI or WhatsApp commands
+
+### 📦 **Building Standalone Executables**
+
+Build distributable applications for Windows, macOS, and Linux:
+
+```bash
+# 🪟 Build for Windows (.exe installer)
+npm run build-win
+
+# 🍎 Build for macOS (.dmg)
+npm run build-mac
+
+# 🐧 Build for Linux (AppImage)
+npm run build-linux
+
+# 🌍 Build for all platforms
+npm run build-all
+```
+
+Output packages are in the `dist/` directory. See [BUILD.md](BUILD.md) for detailed build instructions.
 
 ---
 

@@ -67,10 +67,28 @@ Authorization: Bearer YOUR_API_KEY
 ## 🌐 Base URL
 
 ```
-https://localhost:3000/api/v1
+http://localhost:3001/api
 ```
 
-**Note:** Replace `localhost:3000` with your WhatsBotX server address.
+**Configuration:**
+- Default Port: `3001` (configurable in Settings → Advanced)
+- Protocol: HTTP (when running locally)
+- Host: `localhost` or your server IP
+
+### Starting the API Server
+
+The API server can be started from the WhatsBotX GUI:
+
+1. **Open WhatsBotX Application**
+2. **Go to:** Settings → Advanced tab
+3. **Click:** "Start API Server" button
+4. **Confirm:** Status shows "Active" when running
+5. **Port:** Check API Dashboard for actual port if changed
+
+**Requirements:**
+- WhatsApp bot must be running first
+- API server only accessible when bot is active
+- Check logs if connection fails
 
 ---
 

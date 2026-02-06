@@ -136,12 +136,25 @@ WhatsBotX/
 - Settings persistence
 
 **ApiServer (`src/api/ApiServer.js`)**
-- REST API endpoints
-- Request validation
-- Response formatting
-- Rate limiting
+- REST API endpoints (port 3001)
+- Startable from GUI Settings → Advanced
+- Requires bot to be running
+- Request validation and response formatting
+- Rate limiting for protection
 
-#### Service Layer
+**Electron GUI (`src/electron/`)**
+- Main process: `main.mjs` - Handles IPC, window management, API server control
+- Renderer: `index.html` - HTML structure
+- Frontend: `app.js` - Event handlers, state management, bulk import display
+- Styling: `styles.css` - Professional UI with dark mode, themes, responsive design
+- Features: 
+  - Settings panel with tabs (General, Appearance, Accessibility, Advanced)
+  - Bulk messaging with imported numbers visualization
+  - API Dashboard with server control
+  - Theme customization and accent color picker
+  - Toggle buttons with persistent storage via localStorage
+
+#### Key IPC Handlers (main.mjs)
 
 **ScheduleManager (`src/services/ScheduleManager.js`)**
 - Cron job scheduling
@@ -174,6 +187,46 @@ graph TD
     N --> O[Database]
     N --> P[WhatsAppBot]
 ```
+
+### GUI & IPC Communication
+
+**New IPC Handlers in main.mjs:**
+
+```javascript
+// Toggle API server with bot dependency
+ipcMain.handle('toggle-api-server', async (event, shouldStart) => {
+  // Only starts if bot is running
+  // Returns port and status
+});
+
+// All existing handlers for bot control still available
+ipcMain.handle('start-bot', async () => {});
+ipcMain.handle('stop-bot', async () => {});
+ipcMain.handle('send-message', async (event, data) => {});
+```
+
+**GUI Features (src/electron/renderer/):**
+
+1. **Bulk Import Display Function** (`displayImportedNumbers()`)
+   - Shows imported numbers in grid layout
+   - Displays up to 50 items with "+X more" indicator
+   - Updates on file upload
+
+2. **Settings Tab System**
+   - Container-specific tab switching
+   - localStorage persistence
+   - Accent color initialization on load
+   - Theme selection without header buttons
+
+3. **API Server Toggle**
+   - Async IPC call from GUI
+   - Status display in API Dashboard
+   - Error handling and logging
+
+4. **Accessibility Improvements**
+   - Smaller, more proportional toggle buttons
+   - Fixed toggle sizing (44x20px)
+   - Better visual feedback
 
 ---
 
