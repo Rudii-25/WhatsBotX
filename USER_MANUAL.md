@@ -50,7 +50,7 @@ WhatsBotX is a powerful WhatsApp automation platform that combines:
 1. **Download WhatsBotX:**
    - Visit the [official website](https://whatsbotx.com)
    - Download the latest version for your operating system
-   - Or clone from GitHub: `git clone https://github.com/yourusername/WhatsBotX.git`
+   - Or clone from GitHub: `git clone https://github.com/Rudii-25/WhatsBotX.git`
 
 2. **Install Dependencies:**
    ```bash
@@ -403,7 +403,7 @@ The dashboard provides an overview of your bot's activity:
 
 - 📖 **Documentation:** [Full Documentation](https://docs.whatsbotx.com)
 - 💬 **Community Forum:** [Discord Server](https://discord.gg/whatsbotx)
-- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/yourusername/WhatsBotX/issues)
+- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/Rudii-25/WhatsBotX/issues)
 - 📧 **Email Support:** support@whatsbotx.com
 
 #### Debug Information
@@ -634,5 +634,19 @@ Set up automated reports:
 - [API Reference](API.md)
 - [Troubleshooting Guide](TROUBLESHOOTING.md)
 - [Developer Guide](DEVELOPER_GUIDE.md)
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 </div>

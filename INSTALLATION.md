@@ -36,7 +36,7 @@ Before installing WhatsBotX, ensure your system meets these requirements:
 
 ```bash
 # 📥 Clone the repository
-git clone https://github.com/yourusername/WhatsBotX.git
+git clone https://github.com/Rudii-25/WhatsBotX.git
 cd WhatsBotX
 
 # 📦 Install dependencies
@@ -52,7 +52,7 @@ npm start
 
 ### Method 2: Direct Download
 
-1. **Download ZIP** from [GitHub Releases](https://github.com/yourusername/WhatsBotX/releases)
+1. **Download ZIP** from [GitHub Releases](https://github.com/Rudii-25/WhatsBotX/releases)
 2. **Extract** the ZIP file to your desired location
 3. **Open Terminal/Command Prompt** in the extracted folder
 4. **Install Dependencies:**
@@ -131,7 +131,7 @@ sudo yum install git
 cd ~/Projects  # or any directory you prefer
 
 # Clone the repository
-git clone https://github.com/yourusername/WhatsBotX.git
+git clone https://github.com/Rudii-25/WhatsBotX.git
 
 # Enter the project directory
 cd WhatsBotX
@@ -516,8 +516,8 @@ git push heroku main
 
 - 📖 **Documentation:** [Full Docs](https://docs.whatsbotx.com)
 - 💬 **Discord:** [Community Support](https://discord.gg/whatsbotx)
-- 🐛 **GitHub Issues:** [Report Bugs](https://github.com/yourusername/WhatsBotX/issues)
-- 📧 **Email:** support@whatsbotx.com
+- 🐛 **GitHub Issues:** [Report Bugs](https://github.com/Rudii-25/WhatsBotX/issues)
+- 📧 **Email:** rudra25trikha@gmail.com
 
 ### Debug Information
 
@@ -557,5 +557,19 @@ Once installed and connected:
 ---
 
 *Installation Guide v2.1.0 - Last updated: January 24, 2024*
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 </div>

@@ -45,6 +45,20 @@ All notable changes to WhatsBotX will be documented in this file.
 
 ---
 
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
+
+</div>
+
 ## [2.0.0] - January 24, 2026
 
 ### ✨ Major Features

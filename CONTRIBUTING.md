@@ -42,7 +42,7 @@ Before you begin, ensure you have:
 ```bash
 # 1. Fork the repository on GitHub
 # 2. Clone your fork
-git clone https://github.com/yourusername/WhatsBotX.git
+git clone https://github.com/Rudii-25/WhatsBotX.git
 cd WhatsBotX
 
 # 3. Install dependencies
@@ -366,7 +366,7 @@ For feature requests, please include:
 ### Communication Channels
 
 - 💬 **Discord:** [Join our community](https://discord.gg/whatsbotx)
-- 🐛 **GitHub Issues:** [Report bugs and request features](https://github.com/yourusername/WhatsBotX/issues)
+- 🐛 **GitHub Issues:** [Report bugs and request features](https://github.com/Rudii-25/WhatsBotX/issues)
 - 📧 **Email:** support@whatsbotx.com
 
 ### Getting Help
@@ -438,5 +438,19 @@ Your contributions help make WhatsApp automation better for everyone.
 ---
 
 *Contributing Guide v2.1.0 - Last updated: January 24, 2024*
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 </div>

@@ -85,7 +85,7 @@
 
 ```bash
 # 📥 Clone the repository
-git clone https://github.com/yourusername/WhatsBotX.git
+git clone https://github.com/Rudii-25/WhatsBotX.git
 cd WhatsBotX
 
 # 📦 Install dependencies
@@ -378,7 +378,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### **📋 Development Setup**
 ```bash
 # Fork and clone
-git clone https://github.com/yourusername/WhatsBotX.git
+git clone https://github.com/Rudii-25/WhatsBotX.git
 cd WhatsBotX
 
 # Install dependencies
@@ -395,9 +395,9 @@ npm run build
 ```
 
 ### **🐛 Bug Reports & Feature Requests**
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/WhatsBotX/issues)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/yourusername/WhatsBotX/discussions)
-- 📖 **Documentation**: [Wiki](https://github.com/yourusername/WhatsBotX/wiki)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/Rudii-25/WhatsBotX/issues)
+- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/Rudii-25/WhatsBotX/discussions)
+- 📖 **Documentation**: [Wiki](https://github.com/Rudii-25/WhatsBotX/wiki)
 
 ---
 
@@ -422,7 +422,7 @@ npm run build
 - 📧 **Email**: support@whatsbotx.com
 - 💬 **Discord**: [Join our community](https://discord.gg/whatsbotx)
 - 📖 **Documentation**: [Read the docs](docs/)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/WhatsBotX/issues)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/Rudii-25/WhatsBotX/issues)
 
 ### **🔍 Troubleshooting**
 - Check the [FAQ](docs/FAQ.md) first
@@ -474,11 +474,15 @@ WhatsBotX aims to be the most comprehensive WhatsApp automation platform, combin
 
 <div align="center">
 
-**Made with ❤️ by the WhatsBotX Team**
+**Made with ❤️ by Rudra Sharma**
 
-[⭐ Star us on GitHub](https://github.com/yourusername/WhatsBotX) • [🐛 Report Issues](https://github.com/yourusername/WhatsBotX/issues) • [📧 Contact Us](mailto:support@whatsbotx.com)
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
 
 ---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 *If this project helped you, please give it a star! ⭐*
 

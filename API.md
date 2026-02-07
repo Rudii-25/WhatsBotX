@@ -796,7 +796,7 @@ POST /api/v1/webhooks
 
 - 📖 **Documentation:** [Full API Docs](https://docs.whatsbotx.com/api)
 - 💬 **Community:** [Discord Server](https://discord.gg/whatsbotx)
-- 🐛 **Issues:** [GitHub Issues](https://github.com/yourusername/WhatsBotX/issues)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/Rudii-25/WhatsBotX/issues)
 - 📧 **Email:** api-support@whatsbotx.com
 
 ### API Status
@@ -814,5 +814,19 @@ Check API status: [https://status.whatsbotx.com](https://status.whatsbotx.com)
 ---
 
 *Need help? Check our [troubleshooting guide](TROUBLESHOOTING.md) or [contact support](mailto:api-support@whatsbotx.com).*
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 </div>

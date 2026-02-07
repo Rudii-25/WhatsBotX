@@ -138,7 +138,7 @@ grep "connection" logs/whatsbotx.log | tail -5
 
 2. **Use HTTPS instead of SSH:**
    ```bash
-   git clone https://github.com/yourusername/WhatsBotX.git
+   git clone https://github.com/Rudii-25/WhatsBotX.git
    ```
 
 3. **Configure Git credentials:**
@@ -855,7 +855,7 @@ sqlite3 data/whatsbotx.db "EXPLAIN QUERY PLAN SELECT * FROM messages WHERE user_
 
 - 📧 **Email:** support@whatsbotx.com
 - 💬 **Discord:** [WhatsBotX Community](https://discord.gg/whatsbotx)
-- 🐛 **GitHub Issues:** [Report Bugs](https://github.com/yourusername/WhatsBotX/issues)
+- 🐛 **GitHub Issues:** [Report Bugs](https://github.com/Rudii-25/WhatsBotX/issues)
 - 📖 **Documentation:** [Full Docs](https://docs.whatsbotx.com)
 
 ---
@@ -910,5 +910,19 @@ pm2 kill
 ---
 
 *Troubleshooting Guide v2.1.0 - Last updated: January 24, 2024*
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 </div>

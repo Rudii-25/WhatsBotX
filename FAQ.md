@@ -58,7 +58,7 @@ No! WhatsBotX uses WhatsApp Web technology, so once connected, your phone can be
 
 1. **Download:**
    ```bash
-   git clone https://github.com/yourusername/WhatsBotX.git
+   git clone https://github.com/Rudii-25/WhatsBotX.git
    cd WhatsBotX
    ```
 
@@ -386,7 +386,7 @@ Currently, WhatsBotX is completely free and open-source. Future premium features
 **Support channels:**
 - 📖 **Documentation:** [Full Docs](https://docs.whatsbotx.com)
 - 💬 **Community:** [Discord Server](https://discord.gg/whatsbotx)
-- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/yourusername/WhatsBotX/issues)
+- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/Rudii-25/WhatsBotX/issues)
 - 📧 **Email:** support@whatsbotx.com
 
 ### What's the response time for support?
@@ -473,7 +473,7 @@ Yes, through the Analytics dashboard or API:
 
 *Have a question not answered here?*
 
-**📧 [Contact Support](mailto:support@whatsbotx.com) • 💬 [Join Discord](https://discord.gg/whatsbotx) • 🐛 [Report Issues](https://github.com/yourusername/WhatsBotX/issues)**
+**📧 [Contact Support](mailto:rudra25trikha@gmail.com) • 💬 [Join Discord](https://discord.gg/whatsbotx) • 🐛 [Report Issues](https://github.com/Rudii-25/WhatsBotX/issues)**
 
 ---
 
@@ -484,5 +484,19 @@ Yes, through the Analytics dashboard or API:
 - [Installation Guide](INSTALLATION.md)
 
 *Last updated: January 24, 2024*
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Rudra Sharma**
+
+[⭐ Star us on GitHub](https://github.com/Rudii-25/WhatsBotX) • [🐛 Report Issues](https://github.com/Rudii-25/WhatsBotX/issues) • [📧 Contact Us](mailto:rudra25trikha@gmail.com)
+
+[🌐 Project Website](https://rudii-25.github.io/WhatsBotX/) • [👤 Rudra Sharma](https://rudrasharma25.com) • [🔗 LinkedIn](https://www.linkedin.com/in/rudra-sharma-714a7b259/)
+
+---
+
+© 2026 Rudra Sharma. All rights reserved.
 
 </div>
