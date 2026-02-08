@@ -624,6 +624,7 @@ Set up automated reports:
 **📖 WhatsBotX User Manual**
 
 *Version 2.0.0 - Last updated: January 24, 2024*
+</div>
 
 ---
 

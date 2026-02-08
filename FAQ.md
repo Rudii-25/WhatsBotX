@@ -474,6 +474,7 @@ Yes, through the Analytics dashboard or API:
 *Have a question not answered here?*
 
 **📧 [Contact Support](mailto:rudra25trikha@gmail.com) • 💬 [Join Discord](https://discord.gg/whatsbotx) • 🐛 [Report Issues](https://github.com/Rudii-25/WhatsBotX/issues)**
+</div>
 
 ---
 

@@ -19,18 +19,23 @@
 
 <table>
   <tr>
-    <td><img src="docs/screenshots/dashboard.png" alt="Dashboard" width="400"/></td>
-    <td><img src="docs/screenshots/bulk-messaging.png" alt="Bulk Messaging" width="400"/></td>
+    <td><img src="Photos/Dashboard.png" alt="Dashboard" width="400"/></td>
+    <td><img src="Photos/Bulk_Messaging.png" alt="Bulk Messaging" width="400"/></td>
   </tr>
   <tr>
-    <td><img src="docs/screenshots/ai-chat.png" alt="AI Chat" width="400"/></td>
-    <td><img src="docs/screenshots/settings.png" alt="Settings" width="400"/></td>
+    <td><img src="Photos/AI_Assistance.png" alt="AI Chat" width="400"/></td>
+    <td><img src="Photos/Settings_Panel.png" alt="Settings" width="400"/></td>
   </tr>
 </table>
 
+</div>
+
 ---
 
-## 🎯 **Core Features**
+<div align="center"> 
+
+## 🎯 **Core Features** </div>
+
 
 ### 🤖 **WhatsApp Bot Features**
 - ✅ **WhatsApp Web Integration** - QR code connection with auto-reconnect
@@ -74,7 +79,10 @@
 
 ---
 
+<div align="center">
+
 ## 🚀 **Quick Start**
+</div>
 
 ### 📋 **Prerequisites**
 - 🟢 **Node.js 18+** - [Download here](https://nodejs.org/)
@@ -128,7 +136,10 @@ Output packages are in the `dist/` directory. See [BUILD.md](BUILD.md) for detai
 
 ---
 
-## 📱 **Usage Guide**
+<div align="center">
+
+## 📱 **Usage Guide** </div>
+
 
 ### 💬 **WhatsApp Commands**
 ```
@@ -185,6 +196,8 @@ Output packages are in the `dist/` directory. See [BUILD.md](BUILD.md) for detai
 
 ---
 
+<div align="center">
+
 ## 🏗️ **Technical Architecture**
 
 ### **🏛️ System Design**
@@ -199,19 +212,19 @@ Output packages are in the `dist/` directory. See [BUILD.md](BUILD.md) for detai
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          └───────────────────────┼───────────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │  SQLite Database│
-                    │                 │
-                    │ • Users         │
-                    │ • Messages      │
-                    │ • Todos         │
-                    │ • Reminders     │
-                    │ • Settings      │
-                    └─────────────────┘
+         │
+          ┌─────────────────┐
+          │  SQLite Database│
+          │                 │
+          │ • Users         │
+          │ • Messages      │
+          │ • Todos         │
+          │ • Reminders     │
+          │ • Settings      │
+          └─────────────────┘
 ```
 
-### **📁 Project Structure**
+### **📁 Project Structure** </div>
 ```
 WhatsBotX/
 ├── 📁 src/
@@ -244,7 +257,9 @@ WhatsBotX/
 
 ---
 
-## 🔧 **API Reference**
+<div align="center">
+
+## 🔧 **API Reference** </div>
 
 ### **📡 Endpoints**
 
@@ -311,6 +326,8 @@ GET /health
 
 ---
 
+<div align="center">
+
 ## 📊 **Database Schema**
 
 | Table | Description | Key Fields |
@@ -323,7 +340,7 @@ GET /health
 
 ---
 
-## 🎯 **Use Cases**
+## 🎯 **Use Cases** </div>
 
 ### **🏢 Business Applications**
 - 📢 **Marketing Campaigns** - Bulk messaging for promotions
@@ -341,6 +358,8 @@ GET /health
 
 ---
 
+<div align="center">
+
 ## 📈 **Performance Metrics**
 
 | Metric | Value | Description |
@@ -354,7 +373,7 @@ GET /health
 
 ---
 
-## 🔒 **Security & Privacy**
+## 🔒 **Security & Privacy** </div>
 
 ### **🛡️ Security Features**
 - **Input Validation** - All user inputs validated and sanitized
@@ -371,7 +390,9 @@ GET /health
 
 ---
 
-## 🤝 **Contributing**
+<div align="center">
+
+## 🤝 **Contributing** </div>
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -401,7 +422,9 @@ npm run build
 
 ---
 
-## 📄 **Documentation**
+<div align="center">
+
+## 📄 **Documentation** </div>
 
 ### **📚 Available Documentation**
 - [📖 **Installation Guide**](docs/INSTALLATION.md) - Detailed setup instructions
@@ -416,7 +439,9 @@ npm run build
 
 ---
 
-## 📞 **Support**
+<div align="center">
+
+## 📞 **Support** </div>
 
 ### **🆘 Getting Help**
 - 📧 **Email**: support@whatsbotx.com
@@ -432,7 +457,9 @@ npm run build
 
 ---
 
-## 📜 **License**
+<div align="center">
+
+## 📜 **License** </div>
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
