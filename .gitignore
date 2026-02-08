@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# WhatsApp session data
+.wwebjs_auth/
+.wwebjs_cache/
+auth_info*/
+session*/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temp files
+*.tmp
+*.temp
+.cache/
+
+# Electron builder
+release/
