@@ -13,7 +13,6 @@ class ApiServer {
     }
 
     async start() {
-        // Check if server is already running
         if (this.server && this.server.listening) {
             logger.warn(`API server is already running on port ${this.port}`);
             return Promise.resolve();
