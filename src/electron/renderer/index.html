@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsBotX - WhatsApp Bot GUI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="qrcode.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i class="fab fa-whatsapp logo-icon"></i>
+                <h1 class="app-title">WhatsBotX</h1>
+                <span class="version">v2.0.0</span>
+            </div>
+            <div class="header-actions">
+                <div class="status-section">
+                    <div class="status-indicator" id="statusIndicator">
+                        <i class="fas fa-circle"></i>
+                        <span id="statusText">Stopped</span>
+                    </div>
+                </div>
+                <!-- Theme controls moved to settings -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="container">
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-cogs"></i>
+                        <h2>Bot Control</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="control-buttons">
+                            <button id="startBtn" class="btn btn-success">
+                                <i class="fas fa-play"></i>
+                                Start Bot
+                            </button>
+                            <button id="stopBtn" class="btn btn-danger" disabled>
+                                <i class="fas fa-stop"></i>
+                                Stop Bot
+                            </button>
+                            <button id="restartBtn" class="btn btn-warning" disabled>
+                                <i class="fas fa-redo"></i>
+                                Restart Bot
+                            </button>
+                            <button id="logoutBtn" class="btn btn-danger" disabled title="Logout from WhatsApp and clear session">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </button>
+                        </div>
+                        <div class="status-message" id="statusMessage">
+                            Bot is currently stopped. Click "Start Bot" to begin.
+                        </div>
+                        
+                        <!-- QR Code Section -->
+                        <div class="qr-section" id="qrSection" style="display: none;">
+                            <div class="qr-container">
+                                <h3><i class="fas fa-qrcode"></i> Scan QR Code with WhatsApp</h3>
+                                <div class="qr-code" id="qrCodeContainer">
+                                    <div class="qr-placeholder">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        <p>Generating QR Code...</p>
+                                    </div>
+                                </div>
+                                <div id="qrTimer" style="margin-top:8px; font-size:13px; color:#666; display:none;">Waiting for QR… 00:00</div>
+                                <div style="margin-top:12px; text-align:center;">
+                                    <button id="openWaWebBtn" class="btn btn-secondary" title="Open WhatsApp Web">
+                                        <i class="fas fa-external-link-alt"></i> Open WhatsApp Web (Fallback)
+                                    </button>
+                                </div>
+                                <div class="qr-instructions">
+                                    <ol>
+                                        <li>Open WhatsApp on your phone</li>
+                                        <li>Go to Settings → Linked Devices</li>
+                                        <li>Tap "Link a Device"</li>
+                                        <li>Scan this QR code</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feature Panels Grid -->
+            <div class="features-grid">
+                <!-- Todo Management -->
+                <section class="todo-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-tasks"></i>
+                            <h2>Todo List</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="todo-input">
+                                <input type="text" id="todoInput" placeholder="Add new task..." class="form-input">
+                                <button id="addTodoBtn" class="btn btn-primary" title="Add new task">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div id="todoList" class="todo-list">
+                                <div class="empty-state">No tasks yet. Add one above!</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Chat -->
+                <section class="ai-chat-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-robot"></i>
+                            <h2>AI Assistant</h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="aiChatHistory" class="chat-history">
+                                <div class="chat-message ai">
+                                    <i class="fas fa-robot"></i>
+                                    <span>Hi! I'm your AI assistant. Ask me anything!</span>
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="aiInput" placeholder="Ask AI something..." class="form-input">
+                                <button id="sendAiBtn" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Auto-Reply Settings -->
+                <section class="autoreply-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-reply"></i>
+                            <h2>Auto-Reply</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="autoReplyToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Enable Auto-Reply</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Custom Message:</label>
+                                <textarea id="autoReplyMessage" class="form-input" placeholder="I'm busy right now..." rows="3"></textarea>
+                                <button id="setAutoReplyBtn" class="btn btn-success">
+                                    <i class="fas fa-save"></i> Set Message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bulk Messaging -->
+                <section class="bulk-messaging-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-paper-plane"></i>
+                            <h2>Bulk Messaging</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="bulk-tabs">
+                                <button class="tab-btn active" data-tab="single">Single Message</button>
+                                <button class="tab-btn" data-tab="bulk">Bulk Import</button>
+                                <button class="tab-btn" data-tab="contacts">Contact List</button>
+                            </div>
+                            
+                            <div id="singleTab" class="tab-content active">
+                                <div class="single-message-form">
+                                    <input type="tel" id="singleNumber" placeholder="Enter phone number (+91XXXXXXXXXX)" class="form-input">
+                                    <textarea id="singleMessage" placeholder="Type your message..." class="form-input" rows="3"></textarea>
+                                    <button id="sendSingleBtn" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Send Message
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="bulkTab" class="tab-content">
+                                <div class="bulk-upload-form">
+                                    <input type="file" id="numbersFile" accept=".txt" class="form-input" style="display:none;">
+                                    <label for="numbersFile" class="file-label">
+                                        <i class="fas fa-upload"></i> Upload Numbers (.txt file)
+                                    </label>
+                                    <textarea id="bulkMessage" placeholder="Type message for all numbers..." class="form-input" rows="3"></textarea>
+                                    <div class="bulk-info">
+                                        <span id="numberCount">0 numbers loaded</span>
+                                    </div>
+                                    <!-- Numbers list display -->
+                                    <div id="importedNumbersList" class="imported-numbers-list" style="display:none; margin-top: 1rem;">
+                                        <h4>Imported Numbers:</h4>
+                                        <div id="numbersListContainer" class="numbers-list-container"></div>
+                                    </div>
+                                    <div class="bulk-actions">
+                                        <button id="sendBulkBtn" class="btn btn-success">
+                                            <i class="fas fa-broadcast-tower"></i> Send to All
+                                        </button>
+                                        <button id="exportBulkBtn" class="btn btn-secondary">
+                                            <i class="fas fa-download"></i> Export Numbers
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="contactsTab" class="tab-content">
+                                <div class="contact-manager">
+                                    <div class="contact-input">
+                                        <input type="text" id="contactName" placeholder="Contact name" class="form-input">
+                                        <input type="tel" id="contactNumber" placeholder="Phone number" class="form-input">
+                                        <button id="addContactBtn" class="btn btn-primary">
+                                            <i class="fas fa-user-plus"></i> Add
+                                        </button>
+                                    </div>
+                                    <div id="contactsList" class="contacts-list"></div>
+                                    <div class="contact-actions-bar">
+                                        <button id="exportContactsBtn" class="btn btn-secondary">
+                                            <i class="fas fa-download"></i> Export Contacts
+                                        </button>
+                                        <button id="importContactsBtn" class="btn btn-secondary">
+                                            <i class="fas fa-upload"></i> Import Contacts
+                                        </button>
+                                        <input type="file" id="importContactsFile" accept=".json,.csv" style="display:none;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="bulkProgress" class="progress-container" style="display: none;">
+                                <div class="progress-bar">
+                                    <div id="progressFill" class="progress-fill"></div>
+                                </div>
+                                <div id="progressText" class="progress-text">Sending messages...</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section class="quick-actions-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-bolt"></i>
+                            <h2>Quick Actions</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="action-buttons">
+                                <button id="jokeBtn" class="btn btn-fun">
+                                    <i class="fas fa-laugh"></i> Random Joke
+                                </button>
+                                <button id="quoteBtn" class="btn btn-inspire">
+                                    <i class="fas fa-quote-right"></i> Inspiration
+                                </button>
+                                <button id="timeBtn" class="btn btn-info">
+                                    <i class="fas fa-clock"></i> Current Time
+                                </button>
+                                <button id="weatherBtn" class="btn btn-weather">
+                                    <i class="fas fa-cloud-sun"></i> Weather
+                                </button>
+                                <button id="newsBtn" class="btn btn-news">
+                                    <i class="fas fa-newspaper"></i> Latest News
+                                </button>
+                                <button id="wikiBtn" class="btn btn-wiki">
+                                    <i class="fas fa-search"></i> Wikipedia
+                                </button>
+                            </div>
+                            <div id="quickActionResult" class="action-result"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Reminders & Scheduling -->
+            <section class="reminders-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h2>Reminders & Scheduling</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="reminder-tabs">
+                            <button class="tab-btn active" data-tab="reminder">Reminders</button>
+                            <button class="tab-btn" data-tab="schedule">Schedule Messages</button>
+                        </div>
+                        
+                        <div id="reminderTab" class="tab-content active">
+                            <div class="reminder-form">
+                                <input type="time" id="reminderTime" class="form-input">
+                                <input type="text" id="reminderText" placeholder="Reminder message..." class="form-input">
+                                <button id="setReminderBtn" class="btn btn-primary">
+                                    <i class="fas fa-bell"></i> Set Reminder
+                                </button>
+                            </div>
+                            <div id="remindersList" class="reminders-list"></div>
+                        </div>
+                        
+                        <div id="scheduleTab" class="tab-content">
+                            <div class="schedule-form">
+                                <select id="scheduleType" class="form-input">
+                                    <option value="daily">Daily Message</option>
+                                    <option value="birthday">Birthday Reminder</option>
+                                </select>
+                                <input type="time" id="scheduleTime" class="form-input">
+                                <input type="text" id="scheduleMessage" placeholder="Message to send..." class="form-input">
+                                <button id="setScheduleBtn" class="btn btn-success">
+                                    <i class="fas fa-calendar-plus"></i> Schedule
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Dashboard -->
+            <section class="api-dashboard-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-server"></i>
+                        <h2>API Dashboard & Endpoints</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="api-tabs">
+                            <button class="tab-btn active" data-tab="api-status">Status</button>
+                            <button class="tab-btn" data-tab="api-endpoints">Endpoints</button>
+                            <button class="tab-btn" data-tab="api-keys">API Keys</button>
+                        </div>
+                        
+                        <div id="api-statusTab" class="tab-content active">
+                            <div class="api-status-container">
+                                <div class="status-card">
+                                    <div class="status-label">API Server</div>
+                                    <div class="status-value" id="apiServerStatus">
+                                        <i class="fas fa-circle text-error"></i> Inactive
+                                    </div>
+                                    <button id="toggleApiServerBtn" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-power-off"></i> Start API Server
+                                    </button>
+                                </div>
+                                <div class="status-card">
+                                    <div class="status-label">API Port</div>
+                                    <div class="status-value" id="apiPort">3001</div>
+                                </div>
+                                <div class="status-card">
+                                    <div class="status-label">Base URL</div>
+                                    <div class="status-value" id="apiBaseUrl">http://localhost:3001</div>
+                                </div>
+                                <div class="status-card">
+                                    <div class="status-label">Connected Clients</div>
+                                    <div class="status-value" id="connectedClients">0</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="api-endpointsTab" class="tab-content">
+                            <div class="endpoints-list">
+                                <div class="endpoint-item">
+                                    <span class="method post">POST</span>
+                                    <span class="path">/api/v1/messages/send</span>
+                                    <span class="desc">Send single message</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method post">POST</span>
+                                    <span class="path">/api/v1/messages/bulk</span>
+                                    <span class="desc">Send bulk messages</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/api/v1/bot/status</span>
+                                    <span class="desc">Get bot status</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method post">POST</span>
+                                    <span class="path">/api/v1/contacts/add</span>
+                                    <span class="desc">Add contact</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/api/v1/contacts/list</span>
+                                    <span class="desc">List all contacts</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/api/v1/analytics/stats</span>
+                                    <span class="desc">Get analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="api-keysTab" class="tab-content">
+                            <div class="api-keys-container">
+                                <div class="api-key-item">
+                                    <label>Current API Key:</label>
+                                    <div class="api-key-display">
+                                        <input type="password" id="apiKeyInput" class="api-key-input" value="sk_live_••••••••••••••••" readonly>
+                                        <button id="toggleApiKeyVisibility" class="btn-icon">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button id="copyApiKeyBtn" class="btn-icon">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="api-key-actions">
+                                    <button id="generateApiKeyBtn" class="btn btn-success">
+                                        <i class="fas fa-key"></i> Generate New Key
+                                    </button>
+                                    <button id="revokeApiKeyBtn" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i> Revoke Key
+                                    </button>
+                                </div>
+                                <div class="api-key-info">
+                                    <p><strong>Keep your API key secure!</strong></p>
+                                    <ul>
+                                        <li>Never share your API key in code or public repositories</li>
+                                        <li>Rotate keys regularly for security</li>
+                                        <li>Revoke compromised keys immediately</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Panel -->
+            <section class="settings-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-sliders-h"></i>
+                        <h2>Application Settings</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-tabs">
+                            <button class="tab-btn active" data-tab="general">General</button>
+                            <button class="tab-btn" data-tab="appearance">Appearance</button>
+                            <button class="tab-btn" data-tab="accessibility">Accessibility</button>
+                            <button class="tab-btn" data-tab="advanced">Advanced</button>
+                        </div>
+                        
+                        <div id="generalTab" class="tab-content active">
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label>Language:</label>
+                                    <select id="languageSelect" class="form-input">
+                                        <option value="en">English</option>
+                                        <option value="hi">हिंदी (Hindi)</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label>Auto-Start Bot:</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="autoStartToggle">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <label>Minimize to Tray:</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="minimizeTrayToggle">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="appearanceTab" class="tab-content">
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label>Theme:</label>
+                                    <select id="themeSelect" class="form-input">
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="purple">Purple</option>
+                                        <option value="green">Green</option>
+                                        <option value="orange">Orange</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label>Accent Color:</label>
+                                    <div class="color-picker-group">
+                                        <input type="color" id="accentColorPicker" class="color-picker" value="#667eea">
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <label>UI Scale:</label>
+                                    <input type="range" id="uiScaleSlider" class="slider" min="80" max="120" value="100" step="5">
+                                    <span id="uiScaleValue">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="accessibilityTab" class="tab-content">
+                            <h3>Accessibility Options</h3>
+                            <div class="accessibility-options">
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="highContrastToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span>High Contrast Mode</span>
+                                </label>
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="largeTextToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span>Large Text</span>
+                                </label>
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="screenReaderToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span>Screen Reader Support</span>
+                                </label>
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="reducedMotionToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span>Reduce Motion</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div id="advancedTab" class="tab-content">
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label>API Port:</label>
+                                    <input type="number" id="apiPortInput" class="form-input" value="3001" min="1000" max="65535">
+                                </div>
+                                <div class="setting-item">
+                                    <label>Log Level:</label>
+                                    <select id="logLevelSelect" class="form-input">
+                                        <option value="error">Error</option>
+                                        <option value="warn">Warning</option>
+                                        <option value="info" selected>Info</option>
+                                        <option value="debug">Debug</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label>Notifications:</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="notificationsToggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="advanced-actions">
+                                <button id="saveSettingsBtn" class="btn btn-success">
+                                    <i class="fas fa-save"></i> Save All Settings
+                                </button>
+                                <button id="resetSettingsBtn" class="btn btn-warning">
+                                    <i class="fas fa-undo"></i> Reset to Defaults
+                                </button>
+                                <button id="clearCacheBtn" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i> Clear Cache
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Statistics -->
+                <section class="stats-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h2>Statistics</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-value" id="messagesProcessed">0</div>
+                                    <div class="stat-label">Messages Processed</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="activeChats">0</div>
+                                    <div class="stat-label">Active Chats</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="uptime">00:00:00</div>
+                                    <div class="stat-label">Uptime</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="commandsExecuted">0</div>
+                                    <div class="stat-label">Commands Executed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Logs Panel -->
+                <section class="logs-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-terminal"></i>
+                            <h2>System Logs</h2>
+                            <div class="card-actions">
+                                <button id="clearLogsBtn" class="btn-icon" title="Clear Logs">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button id="refreshLogsBtn" class="btn-icon" title="Refresh Logs">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="logs-container" id="logsContainer">
+                                <div class="log-entry info">
+                                    <span class="log-time">--:--:--</span>
+                                    <span class="log-module">[GUI]</span>
+                                    <span class="log-message">Application started</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Configuration Panel -->
+            <section class="config-panel" id="configPanel" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-cog"></i>
+                        <h2>Configuration</h2>
+                        <button id="closeConfigBtn" class="btn-icon">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <form id="configForm">
+                            <div class="form-group">
+                                <label for="apiEnabled">Enable API Server</label>
+                                <input type="checkbox" id="apiEnabled" name="apiEnabled">
+                            </div>
+                            <div class="form-group">
+                                <label for="apiPort">API Port</label>
+                                <input type="number" id="apiPort" name="apiPort" value="3001" min="1000" max="65535">
+                            </div>
+                            <div class="form-group">
+                                <label for="logLevel">Log Level</label>
+                                <select id="logLevel" name="logLevel">
+                                    <option value="error">Error</option>
+                                    <option value="warn">Warning</option>
+                                    <option value="info" selected>Info</option>
+                                    <option value="debug">Debug</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Configuration
+                                </button>
+                                <button type="button" id="cancelConfigBtn" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span>© 2026 WhatsBotX - Personal AI Assistant for WhatsApp</span>
+            <span>Electron v<span id="electronVersion">Unknown</span></span>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p id="loadingText">Starting bot...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
