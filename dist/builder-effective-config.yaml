@@ -1,0 +1,64 @@
+directories:
+  output: dist
+  buildResources: assets
+appId: com.whatsbotx.app
+productName: WhatsBotX
+files:
+  - filter:
+      - src/**/*
+      - node_modules/**/*
+      - package.json
+      - web/dist/**/*
+extraResources:
+  - from: logs
+    to: logs
+    filter:
+      - '**/*'
+  - from: data
+    to: data
+    filter:
+      - '**/*'
+win:
+  target:
+    - nsis
+    - portable
+  icon: assets/icon.ico
+  certificateFile: null
+  certificatePassword: <stripped sensitive data>
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: WhatsBotX
+mac:
+  target:
+    - dmg
+    - zip
+  icon: assets/icon.icns
+  category: public.app-category.productivity
+  identity: null
+dmg:
+  contents:
+    - x: 110
+      'y': 150
+      type: file
+    - x: 240
+      'y': 150
+      type: link
+      path: /Applications
+linux:
+  target:
+    - AppImage
+    - deb
+  icon: assets/icon.png
+  category: Office
+deb:
+  depends:
+    - gconf2
+    - gconf-service
+    - libnotify4
+    - libappindicator1
+    - libxss1
+    - libxkbfile1
+electronVersion: 28.3.3

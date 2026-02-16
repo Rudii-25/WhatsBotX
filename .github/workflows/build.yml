@@ -1,0 +1,93 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          # Windows build
+          - os: windows-latest
+            name: Windows
+            build-cmd: npm run build-win
+            artifact-pattern: 'dist/WhatsBotX*.exe'
+            artifact-name: Windows-Build
+
+          # macOS build (both Intel and Apple Silicon)
+          - os: macos-latest
+            name: macOS
+            build-cmd: npm run build-mac
+            artifact-pattern: 'dist/WhatsBotX*.dmg'
+            artifact-name: macOS-Build
+
+          # Linux build
+          - os: ubuntu-latest
+            name: Linux
+            build-cmd: npm run build-linux
+            artifact-pattern: 'dist/WhatsBotX*.AppImage'
+            artifact-name: Linux-Build
+
+    runs-on: ${{ matrix.os }}
+    name: Build ${{ matrix.name }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: ${{ matrix.build-cmd }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: ${{ matrix.artifact-pattern }}
+          retention-days: 30
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Windows build
+        uses: actions/download-artifact@v4
+        with:
+          name: Windows-Build
+          path: ./release
+
+      - name: Download macOS build
+        uses: actions/download-artifact@v4
+        with:
+          name: macOS-Build
+          path: ./release
+
+      - name: Download Linux build
+        uses: actions/download-artifact@v4
+        with:
+          name: Linux-Build
+          path: ./release
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

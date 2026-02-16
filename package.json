@@ -1,0 +1,153 @@
+{
+  "name": "whatsbotx",
+  "version": "2.0.0",
+  "description": "AI-powered WhatsApp Personal Assistant Bot for productivity and automation",
+  "main": "src/index.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "electron src/electron/main.mjs",
+    "cli": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "setup": "node scripts/setup.js",
+    "test": "echo \"No tests specified\" && exit 0",
+    "electron": "electron src/electron/main.mjs",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on tcp:3001 && electron src/electron/main.mjs\"",
+    "gui": "electron src/electron/main.mjs",
+    "app": "electron src/electron/main.mjs",
+    "gui-dev": "NODE_ENV=development electron src/electron/main.mjs",
+    "build": "electron-builder --publish never",
+    "build-win": "electron-builder --win --publish never",
+    "build-mac": "electron-builder --mac --publish never",
+    "build-linux": "electron-builder --linux --publish never",
+    "build-universal-mac": "electron-builder --mac --universal --publish never",
+    "dist": "npm run build"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "ai",
+    "assistant",
+    "productivity",
+    "automation"
+  ],
+  "author": "Rudra Sharma",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.5.0",
+    "axios": "^1.6.0",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "figlet": "^1.7.0",
+    "jspdf": "^2.5.1",
+    "moment": "^2.29.4",
+    "node-cron": "^3.0.3",
+    "openai": "^4.20.1",
+    "puppeteer": "^21.5.2",
+    "qrcode": "^1.5.3",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.33.0",
+    "sqlite3": "^5.1.6",
+    "whatsapp-web.js": "^1.23.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.3",
+    "electron-builder": "^24.6.3",
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "build": {
+    "appId": "com.whatsbotx.app",
+    "productName": "WhatsBotX",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "web/dist/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "logs",
+        "to": "logs",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "data",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.ico",
+      "certificateFile": null,
+      "certificatePassword": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "WhatsBotX"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.productivity",
+      "identity": null
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150,
+          "type": "file"
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icon.png",
+      "category": "Office"
+    },
+    "deb": {
+      "depends": [
+        "gconf2",
+        "gconf-service",
+        "libnotify4",
+        "libappindicator1",
+        "libxss1",
+        "libxkbfile1"
+      ]
+    }
+  }
+}
