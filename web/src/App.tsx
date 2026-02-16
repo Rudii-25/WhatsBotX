@@ -53,7 +53,7 @@ const App = () => {
               <ScrollProgress />
               <ToasterLegacy />
               <Toaster />
-              <BrowserRouter>
+              <BrowserRouter basename="/WhatsBotX">
                 <ScrollToTop />
                 <AnimatedRoutes />
               </BrowserRouter>
